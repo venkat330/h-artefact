@@ -1,4 +1,4 @@
-FROM ${local.build_base}:${local.build_version}
+FROM ${base}:${version}
 
 RUN mkdir -p /my_config
 COPY myconfig /my_config
