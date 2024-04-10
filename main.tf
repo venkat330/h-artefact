@@ -70,7 +70,6 @@ resource "github_repository_file" "remove_config" {
   branch              = "main"
   overwrite_on_create = true
   commit_message      = "test"
-  commit_sha = data.github_branch.main.sha
 }
 
 output "name" {
@@ -81,19 +80,19 @@ output "new_repo" {
   value = github_repository.repo
 }
 
-# resource "github_repository_file" "Dockerfile_base" {
-#   repository          = replace(github_repository.repo.name, "venkat330/", "")
-#   file                = "Dockerfile.base"
-#   content             = ""
-#   branch              = "main"
-#   overwrite_on_create = true
-# }
+resource "github_repository_file" "Dockerfile_base" {
+  repository          = replace(github_repository.repo.name, "venkat330/", "")
+  file                = "Dockerfile.base"
+  content             = ""
+  branch              = "main"
+  overwrite_on_create = true
+}
 
 
-# resource "github_repository_file" "Dockerfile" {
-#   repository          = replace(github_repository.repo.name, "venkat330/", "")
-#   file                = "Dockerfile"
-#   content             = local.dockerfile_content
-#   branch              = "main"
-#   overwrite_on_create = true
-# }
+resource "github_repository_file" "Dockerfile" {
+  repository          = replace(github_repository.repo.name, "venkat330/", "")
+  file                = "Dockerfile"
+  content             = local.dockerfile_content
+  branch              = "main"
+  overwrite_on_create = true
+}
